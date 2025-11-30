@@ -15,27 +15,29 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {
     @BeforeAll
-    static void beforeAll() {
+    static void setupConfig() {
         Configuration.browser = BrowserstackDriver.class.getName();
         Configuration.browserSize = null;
         Configuration.timeout = 30000;
     }
 
     @BeforeEach
-    void beforeEach() {
+    void addAllureListener() {
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        open();
+    }
+
+    @BeforeEach
+    void openApp() {
         open();
     }
 
     @AfterEach
     void addAttachments() {
         String sessionId = Selenide.sessionId().toString();
-        System.out.println(sessionId);
-
-//        Attach.screenshotAs("Last screenshot"); // todo fix
         Attach.pageSource();
-        closeWebDriver();
-
         Attach.addVideo(sessionId);
+
+        closeWebDriver();
     }
 }
