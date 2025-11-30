@@ -27,11 +27,6 @@ public class TestBase {
         open();
     }
 
-    @BeforeEach
-    void openApp() {
-        open();
-    }
-
     @AfterEach
     void addAttachments() {
         String sessionId = Selenide.sessionId().toString();
