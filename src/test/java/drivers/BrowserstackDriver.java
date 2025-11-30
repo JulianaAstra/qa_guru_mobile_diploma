@@ -18,8 +18,8 @@ public class BrowserstackDriver implements WebDriverProvider {
         caps.setCapability("browserstack.user", "floratds_7A1NL2");
         caps.setCapability("browserstack.key", "sqqsJJGR7BeDwyArmhC3");
         caps.setCapability("app", "bs://sample.app");
-        caps.setCapability("device", "Google Pixel 7 Pro");
-        caps.setCapability("os_version", "13.0");
+        caps.setCapability("device", "Samsung Galaxy S22 Ultra");
+        caps.setCapability("os_version", "12.0");
         caps.setCapability("project", "BrowserStack Sample");
         caps.setCapability("build", "browserstack-build-1");
         caps.setCapability("name", "first_test");

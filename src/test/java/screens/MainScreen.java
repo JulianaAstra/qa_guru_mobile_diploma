@@ -27,8 +27,8 @@ public class MainScreen {
     };
 
     @Step("Check item {item} founded")
-    public MainScreen checkItemFounded(String item) {
-        searchResult.shouldHave(text(item));
-        return this;
+    public void checkItemFounded(String item) {
+        searchResult
+                .shouldHave(text(item));
     };
 }
