@@ -2,7 +2,7 @@ package drivers;
 
 public class DriverSelector {
     public static String getDriver() {
-        String deviceHost = System.getProperty("deviceHost", "emulation");
+        String deviceHost = System.getProperty("deviceHost");
         System.out.println("deviceHost: " + deviceHost);
 
         if ("browserstack".equals(deviceHost)) {
