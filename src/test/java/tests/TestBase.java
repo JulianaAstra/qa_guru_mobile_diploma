@@ -39,12 +39,12 @@ public class TestBase {
         String deviceHost = System.getProperty("deviceHost");
 
         Attach.pageSource();
-        Attach.screenshotAs("Last screenshot");
-
         if ("browserstack".equals(deviceHost)) {
             Attach.addVideo(sessionId);
         }
 
         closeWebDriver();
+
+        Attach.screenshotAs("Last screenshot");
     }
 }
