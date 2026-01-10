@@ -45,6 +45,6 @@ public class TestBase {
 
         closeWebDriver();
 
-        Attach.screenshotAs("Last screenshot");
+//        Attach.screenshotAs("Last screenshot");
     }
 }
