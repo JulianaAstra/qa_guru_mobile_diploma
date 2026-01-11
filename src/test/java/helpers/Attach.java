@@ -20,14 +20,39 @@ public class Attach {
         try {
             WebDriver driver = getWebDriver();
             String result = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+            String cleanedResult = result.replaceAll("[^A-Za-z0-9+/=]", "");
 
-            // Просто выводим всё, что вернул BrowserStack
             System.out.println("========================================");
-            System.out.println("BROWSERSTACK SCREENSHOT RESPONSE START");
+            System.out.println("RAW RESPONSE ANALYSIS:");
             System.out.println("========================================");
-            System.out.println(result);
-            System.out.println("========================================");
-            System.out.println("BROWSERSTACK SCREENSHOT RESPONSE END");
+            System.out.println("Total length: " + result.length());
+
+            // Проверим первые 20 символов в деталях
+            System.out.println("First 20 characters with codes:");
+            for (int i = 0; i < Math.min(20, result.length()); i++) {
+                char c = result.charAt(i);
+                System.out.printf("  [%d] '%c' (code: %d, hex: %02x)%n",
+                        i, c, (int)c, (int)c);
+            }
+
+            // Проверим последние 20 символов
+            System.out.println("Last 20 characters:");
+            int start = Math.max(0, result.length() - 20);
+            for (int i = start; i < result.length(); i++) {
+                char c = result.charAt(i);
+                System.out.printf("  [%d] '%c' (code: %d)%n", i, c, (int)c);
+            }
+
+            // Проверим, есть ли не-base64 символы
+            String invalidChars = findInvalidBase64Chars(result);
+            if (!invalidChars.isEmpty()) {
+                System.out.println("INVALID BASE64 CHARACTERS FOUND:");
+                System.out.println(invalidChars);
+
+                // Покажем контекст вокруг невалидных символов
+                showInvalidCharsContext(result);
+            }
+
             System.out.println("========================================");
 
             // Пробуем декодировать
@@ -57,5 +82,41 @@ public class Attach {
         return "<html><body><video width='100%' height='100%' controls autoplay><source src='"
                 + Browserstack.videoUrl(sessionId)
                 + "' type='video/mp4'></video></body></html>";
+    }
+
+
+    private static String findInvalidBase64Chars(String str) {
+        // Base64 допустимые символы: A-Z, a-z, 0-9, +, /, =
+        StringBuilder invalid = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (!isValidBase64Char(c)) {
+                invalid.append(String.format("  Position %d: '%c' (code %d)%n", i, c, (int)c));
+            }
+        }
+        return invalid.toString();
+    }
+
+    private static boolean isValidBase64Char(char c) {
+        return (c >= 'A' && c <= 'Z') ||
+                (c >= 'a' && c <= 'z') ||
+                (c >= '0' && c <= '9') ||
+                c == '+' || c == '/' || c == '=' ||
+                c == '\n' || c == '\r'; // иногда base64 может содержать переносы строк
+    }
+
+    private static void showInvalidCharsContext(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            char c = str.charAt(i);
+            if (!isValidBase64Char(c)) {
+                int start = Math.max(0, i - 10);
+                int end = Math.min(str.length(), i + 10);
+                System.out.printf("Invalid char at position %d: '%c' (code %d)%n", i, c, (int)c);
+                System.out.printf("Context: ...%s[%s]%s...%n",
+                        str.substring(start, i),
+                        str.charAt(i),
+                        str.substring(i + 1, end));
+            }
+        }
     }
 }
