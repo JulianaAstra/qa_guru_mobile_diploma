@@ -6,7 +6,6 @@ import org.openqa.selenium.TakesScreenshot;
 import java.nio.charset.StandardCharsets;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
-
 public class Attach {
     @Attachment(value = "{attachName}", type = "image/png")
     public static byte[] screenshotAs(String attachName) {

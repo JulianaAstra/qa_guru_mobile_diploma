@@ -10,11 +10,18 @@ import static io.appium.java_client.AppiumBy.id;
 
 public class ArticleScreen {
     SelenideElement article = $(id("pcs"));
+    // добавить элементы для модалок и закрытие
 
-    @Step
-    public void checkArticleByName(String articleName) {
+    @Step("Check article by name")
+    public ArticleScreen checkArticleByName(String articleName) {
         article
                 .shouldBe(visible)
                 .shouldHave(text(articleName));
+        return this;
+    }
+
+    @Step("Close modal window")
+    public ArticleScreen closeModal() {
+        return this;
     }
 }

@@ -54,6 +54,7 @@ tasks.withType(JavaCompile) {
 
 tasks.withType(Test) {
     useJUnitPlatform()
+    systemProperties System.getProperties()
     systemProperty "allure.results.directory", "build/allure-results"
     testLogging {
         lifecycle {
@@ -63,8 +64,8 @@ tasks.withType(Test) {
     }
 }
 
-task android(type: Test) {
+task emulation(type: Test) {
     useJUnitPlatform {
-        includeTags 'android'
+        includeTags 'emulation'
     }
 }
