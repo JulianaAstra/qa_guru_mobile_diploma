@@ -3,14 +3,43 @@ package helpers;
 import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
+
 import java.nio.charset.StandardCharsets;
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 
 public class Attach {
+//    @Attachment(value = "{attachName}", type = "image/png")
+//    public static byte[] screenshotAs(String attachName) {
+//        return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
+//    }
+
     @Attachment(value = "{attachName}", type = "image/png")
     public static byte[] screenshotAs(String attachName) {
-        return ((TakesScreenshot) getWebDriver()).getScreenshotAs(OutputType.BYTES);
+        try {
+            WebDriver driver = getWebDriver();
+            String result = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
+
+            // Просто выводим всё, что вернул BrowserStack
+            System.out.println("========================================");
+            System.out.println("BROWSERSTACK SCREENSHOT RESPONSE START");
+            System.out.println("========================================");
+            System.out.println(result);
+            System.out.println("========================================");
+            System.out.println("BROWSERSTACK SCREENSHOT RESPONSE END");
+            System.out.println("========================================");
+
+            // Пробуем декодировать
+            return java.util.Base64.getDecoder().decode(result);
+
+        } catch (IllegalArgumentException e) {
+            System.out.println("ERROR DECODING BASE64: " + e.getMessage());
+            return new byte[0];
+        } catch (Exception e) {
+            System.out.println("ERROR: " + e.getMessage());
+            return new byte[0];
+        }
     }
 
     @Attachment(value = "Page source", type = "text/plain")
