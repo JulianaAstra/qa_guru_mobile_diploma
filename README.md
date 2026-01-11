@@ -1,4 +1,4 @@
-## <img alt="Wikipedia" height="52" src="images/wikipedia.svg" width="134"/></a>
+## <img alt="Wikipedia" height="52" src="images/logo/wikipedia.svg" width="134"/></a>
 # Проект по мобильной автоматизации тестирования для приложения Wikipedia
 
 ## **Содержание:**
@@ -113,7 +113,7 @@ ____
 
 ____
 <a id="video"></a>
-## <img alt="Browserstack" height="25" src="images/Browserstack.svg" width="25"/></a> Пример видео выполнения тестов в Browserstack
+## <img alt="Browserstack" height="25" src="images/logo/Browserstack.svg" width="25"/></a> Пример видео выполнения тестов в Browserstack
 ____
 <p align="center">
 <img title="Browserstack Video" src="images/video/video_report.gif" width="550" height="350"  alt="video">   
