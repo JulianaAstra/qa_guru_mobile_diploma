@@ -34,15 +34,32 @@ public class TestBase {
     }
 
     @AfterEach
-    void addAttachments() {
+    void addAttachments() throws InterruptedException {
         String sessionId = Selenide.sessionId().toString();
         String deviceHost = System.getProperty("deviceHost");
+
+        // 1. Сначала скриншот (самая важная операция)
+        try {
+            Attach.screenshotAs("Last screenshot");
+        } catch (Exception e) {
+            System.out.println("Screenshot failed: " + e.getMessage());
+        }
+
+        // 2. Небольшая пауза
+        Thread.sleep(1000);
+
+        // 3. Затем page source
+        try {
+            Attach.pageSource();
+        } catch (Exception e) {
+            System.out.println("Page source failed: " + e.getMessage());
+        }
+
+        // 4. Закрываем драйвер
+        closeWebDriver();
 
         if ("browserstack".equals(deviceHost)) {
             Attach.addVideo(sessionId);
         }
-        Attach.screenshotAs("Last screenshot");
-        Attach.pageSource();
-        closeWebDriver();
     }
 }
