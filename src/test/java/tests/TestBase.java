@@ -38,13 +38,11 @@ public class TestBase {
         String sessionId = Selenide.sessionId().toString();
         String deviceHost = System.getProperty("deviceHost");
 
-        Attach.pageSource();
         if ("browserstack".equals(deviceHost)) {
             Attach.addVideo(sessionId);
         }
-
+        Attach.screenshotAs("Last screenshot");
+        Attach.pageSource();
         closeWebDriver();
-
-//        Attach.screenshotAs("Last screenshot");
     }
 }
