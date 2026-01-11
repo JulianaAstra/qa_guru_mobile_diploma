@@ -5,6 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 import static io.appium.java_client.AppiumBy.accessibilityId;
@@ -42,4 +43,10 @@ public class MainScreen {
         searchResult
                 .shouldHave(text(item));
     };
+
+    @Step("Click article name {articleName} in search results")
+    public void clickArticleName(String articleName) {
+        searchResult.find(byText(articleName))
+                .click();
+    }
 }

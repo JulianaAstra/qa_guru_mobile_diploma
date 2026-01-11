@@ -30,7 +30,6 @@ public class BrowserstackDriver implements WebDriverProvider {
         caps.setCapability("project", "BrowserStack Sample");
         caps.setCapability("build", "browserstack-build-1");
         caps.setCapability("name", "first_test");
-        caps.setCapability("browserstack.debug", "true");
 
         try {
             return new RemoteWebDriver(

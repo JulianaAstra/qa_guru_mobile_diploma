@@ -19,9 +19,17 @@ public class SearchTests extends TestBase {
                 .checkItemFounded(articleName);
     }
 
-    // тест 5
-    // статья открывается
-    // 1. найти поиском статью - статья есть в списке
-    // 2. кликнуть по статье в списке
-    // ор: статья открылась
+    @Test
+    @DisplayName("Article opens from search results")
+    void successfuArticleOpenTest() {
+        mainScreen
+                .revealSearchInput()
+                .searchItem(articleName)
+                .checkContentFound()
+                .checkItemFounded(articleName);
+        mainScreen
+                .clickArticleName(articleName);
+
+        articleScreen.checkArticleByName(articleName);
+    }
 }
