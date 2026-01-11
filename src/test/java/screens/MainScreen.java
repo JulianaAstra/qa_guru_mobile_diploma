@@ -44,9 +44,8 @@ public class MainScreen {
                 .shouldHave(text(item));
     };
 
-    @Step("Click article name {articleName} in search results")
-    public void clickArticleName(String articleName) {
-        searchResult.shouldHave(text(articleName))
-                .click();
+    @Step("Click first result in search results")
+    public void clickFirstSearchItem() {
+        searchResult.click();
     }
 }
