@@ -8,7 +8,7 @@ public class DriverSelector {
         if ("browserstack".equals(deviceHost)) {
             return "drivers.BrowserstackDriver";
         } else if ("emulation".equals(deviceHost)) {
-            return "drivers.LocalDriver";
+            return "drivers.EmulationDriver";
         } else {
             throw new AssertionError("Некорректный хост: " + deviceHost);
         }
