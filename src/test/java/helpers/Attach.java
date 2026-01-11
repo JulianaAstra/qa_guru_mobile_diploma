@@ -4,8 +4,17 @@ import io.qameta.allure.Attachment;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.Command;
+import org.openqa.selenium.remote.CommandExecutor;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.Response;
 
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Collections;
+
 import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 
 
@@ -19,50 +28,65 @@ public class Attach {
     public static byte[] screenshotAs(String attachName) {
         try {
             WebDriver driver = getWebDriver();
-            String result = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
-            String cleanedResult = result.replaceAll("[^A-Za-z0-9+/=]", "");
 
-            System.out.println("========================================");
-            System.out.println("RAW RESPONSE ANALYSIS:");
-            System.out.println("========================================");
-            System.out.println("Total length: " + result.length());
+            // Вариант 1: Получаем как RAW объект для диагностики
+            System.out.println("=== DEBUG: Getting screenshot ===");
 
-            // Проверим первые 20 символов в деталях
-            System.out.println("First 20 characters with codes:");
-            for (int i = 0; i < Math.min(20, result.length()); i++) {
-                char c = result.charAt(i);
-                System.out.printf("  [%d] '%c' (code: %d, hex: %02x)%n",
-                        i, c, (int)c, (int)c);
+            if (driver instanceof RemoteWebDriver) {
+                RemoteWebDriver remoteDriver = (RemoteWebDriver) driver;
+
+                // Пробуем выполнить команду напрямую
+                try {
+                    // Получаем executor
+                    CommandExecutor executor = remoteDriver.getCommandExecutor();
+
+                    // Создаем команду для скриншота
+                    Response response = executor.execute(
+                            new Command(remoteDriver.getSessionId(), "screenshot", Collections.emptyMap())
+                    );
+
+                    Object value = response.getValue();
+                    System.out.println("Response value class: " + (value != null ? value.getClass().getName() : "null"));
+                    System.out.println("Response value toString: " + value);
+
+                    // Проверяем, что это строка
+                    if (value instanceof String) {
+                        String strValue = (String) value;
+                        System.out.println("String length: " + strValue.length());
+                        System.out.println("First 500 chars: " +
+                                (strValue.length() > 500 ? strValue.substring(0, 500) + "..." : strValue));
+
+                        // Сохраняем в файл
+                        try {
+                            Files.write(Paths.get("browserstack-response.txt"),
+                                    strValue.getBytes(StandardCharsets.UTF_8));
+                            System.out.println("Saved response to browserstack-response.txt");
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                } catch (Exception e) {
+                    System.out.println("Error executing command: " + e.getMessage());
+                    e.printStackTrace();
+                }
             }
 
-            // Проверим последние 20 символов
-            System.out.println("Last 20 characters:");
-            int start = Math.max(0, result.length() - 20);
-            for (int i = start; i < result.length(); i++) {
-                char c = result.charAt(i);
-                System.out.printf("  [%d] '%c' (code: %d)%n", i, c, (int)c);
+            // Вариант 2: Пробуем получить как bytes
+            System.out.println("=== Trying to get screenshot as BYTES ===");
+            try {
+                byte[] bytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
+                System.out.println("Success! Got " + bytes.length + " bytes");
+                return bytes;
+            } catch (Exception e) {
+                System.out.println("Failed to get as BYTES: " + e.getMessage());
+                e.printStackTrace();
             }
 
-            // Проверим, есть ли не-base64 символы
-            String invalidChars = findInvalidBase64Chars(result);
-            if (!invalidChars.isEmpty()) {
-                System.out.println("INVALID BASE64 CHARACTERS FOUND:");
-                System.out.println(invalidChars);
-
-                // Покажем контекст вокруг невалидных символов
-                showInvalidCharsContext(result);
-            }
-
-            System.out.println("========================================");
-
-            // Пробуем декодировать
-            return java.util.Base64.getDecoder().decode(result);
-
-        } catch (IllegalArgumentException e) {
-            System.out.println("ERROR DECODING BASE64: " + e.getMessage());
             return new byte[0];
+
         } catch (Exception e) {
-            System.out.println("ERROR: " + e.getMessage());
+            System.out.println("ERROR in screenshotAs: " + e.getMessage());
             return new byte[0];
         }
     }
