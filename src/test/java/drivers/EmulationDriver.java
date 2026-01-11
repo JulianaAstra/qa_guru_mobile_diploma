@@ -1,7 +1,7 @@
 package drivers;
 
 import com.codeborne.selenide.WebDriverProvider;
-import config.LocalConfig;
+import config.EmulationConfig;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import org.aeonbits.owner.ConfigFactory;
 import org.openqa.selenium.Capabilities;
@@ -19,8 +19,8 @@ import static org.apache.commons.io.FileUtils.copyInputStreamToFile;
 
 public class EmulationDriver implements WebDriverProvider {
 
-    private final LocalConfig config = ConfigFactory.create(
-            LocalConfig.class,
+    private final EmulationConfig config = ConfigFactory.create(
+            EmulationConfig.class,
             System.getProperties()
     );
 
@@ -31,9 +31,7 @@ public class EmulationDriver implements WebDriverProvider {
 
         options.setAutomationName(ANDROID_UIAUTOMATOR2)
                .setPlatformName(ANDROID)
-//               .setPlatformVersion("11.0")
                .setPlatformVersion(config.osVersion())
-//               .setDeviceName("pixel_4")
                .setDeviceName(config.device())
                .setApp(getAppPath())
                .setAppPackage("org.wikipedia.alpha")

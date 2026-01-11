@@ -22,8 +22,8 @@ public class BrowserstackDriver implements WebDriverProvider {
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
         MutableCapabilities caps = new MutableCapabilities();
 
-        caps.setCapability("browserstack.user", config.user());
-        caps.setCapability("browserstack.key", config.key());
+        caps.setCapability("user", config.user());
+        caps.setCapability("key", config.key());
         caps.setCapability("app", config.app());
         caps.setCapability("device", config.device());
         caps.setCapability("os_version", config.osVersion());

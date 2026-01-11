@@ -6,20 +6,17 @@ import org.aeonbits.owner.Config;
         "classpath:browserstack.properties"
 })
 public interface BrowserstackConfig extends Config {
-    @Key("browserstack.user")
+    @Key("user")
     String user();
 
-    @Key("browserstack.key")
+    @Key("key")
     String key();
 
-    @Key("browserstack.url")
+    @Key("url")
     String url();
 
     @Key("app")
     String app();
-
-    @Key("platformName")
-    String platformName();
 
     @Key("os_version")
     String osVersion();
