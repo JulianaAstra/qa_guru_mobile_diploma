@@ -1,4 +1,4 @@
-## <img alt="EscapeRoom" height="52" src="images/Wikipedia-logo.png" width="134"/></a>
+## <img alt="EscapeRoom" height="52" src="images/Wikipedia-logo.svg" width="134"/></a>
 # Проект по мобильной автоматизации тестирования для приложения Wikipedia
 
 ## **Содержание:**
