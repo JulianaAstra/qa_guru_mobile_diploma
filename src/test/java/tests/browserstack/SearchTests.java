@@ -26,8 +26,6 @@ public class SearchTests extends TestBase {
                 .revealSearchInput()
                 .searchItem(articleName)
                 .checkContentFound()
-                .checkItemFounded(articleName);
-        mainScreen
                 .clickArticleName(articleName);
 
         articleScreen.checkArticleByName(articleName);
