@@ -37,38 +37,17 @@ public class TestBase {
     }
 
     @AfterEach
-    void addAttachments() throws InterruptedException {
+    void addAttachments() {
         String sessionId = Selenide.sessionId().toString();
         String deviceHost = System.getProperty("deviceHost");
 
-        System.out.println("=== START TEST TEARDOWN ===");
-
-        try {
-            // 1. Получаем информацию о драйвере
-            WebDriver driver = getWebDriver();
-            System.out.println("Driver: " + driver);
-            System.out.println("Session ID: " + ((RemoteWebDriver) driver).getSessionId());
-
-            // 2. Пытаемся получить скриншот с подробным логированием
-            System.out.println("--- Attempting screenshot ---");
-            Attach.screenshotAs("Last screenshot");
-
-            // 3. Получаем page source
-            System.out.println("--- Getting page source ---");
-            Attach.pageSource();
-
-        } catch (Exception e) {
-            System.out.println("ERROR in teardown: " + e.getMessage());
-        }
-
-        // 4. Закрываем драйвер
-        System.out.println("--- Closing driver ---");
-        closeWebDriver();
-
         if ("browserstack".equals(deviceHost)) {
             Attach.addVideo(sessionId);
+        } else {
+            Attach.screenshotAs("Last screenshot");
         }
 
-        System.out.println("=== END TEST TEARDOWN ===");
+        Attach.pageSource();
+        closeWebDriver();
     }
 }
