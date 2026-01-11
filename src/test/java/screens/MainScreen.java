@@ -47,7 +47,6 @@ public class MainScreen {
     @Step("Click article name {articleName} in search results")
     public void clickArticleName(String articleName) {
         searchResult.shouldHave(text(articleName))
-                .find(byText(articleName))
                 .click();
     }
 }
