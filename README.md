@@ -1,4 +1,4 @@
-## <img alt="Wikipedia" height="52" src="images/logo/wikipedia.svg" width="134"/></a>
+## <img alt="Wikipedia" height="52" src="images/logo/wikipedia-earth.svg" width="200"/></a>
 # Проект по мобильной автоматизации тестирования для приложения Wikipedia
 
 ## **Содержание:**
