@@ -1,4 +1,4 @@
-## <img alt="Wikipedia" height="52" src="images/wikipedia.svg" width="134"/></a>
+## <img alt="Wikipedia" height="52" src="images/logo/wikipedia.svg" width="134"/></a>
 # Проект по мобильной автоматизации тестирования для приложения Wikipedia
 
 ## **Содержание:**
@@ -28,7 +28,8 @@ ____
 <a href="https://gradle.org/"><img src="images/logo/Gradle.svg" width="50" height="50"  alt="Gradle"/></a>  
 <a href="https://selenide.org/"><img src="images/logo/Selenide.svg" width="50" height="50"  alt="Selenide"/></a>  
 <a href="https://allurereport.org/"><img src="images/logo/Allure.svg" width="50" height="50"  alt="Allure"/></a>  
-<a href="https://www.jenkins.io/"><img src="images/logo/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a>   
+<a href="https://www.jenkins.io/"><img src="images/logo/Jenkins.svg" width="50" height="50"  alt="Jenkins"/></a>
+<a href="https://www.browserstack.com/"><img src="images/logo/Browserstack.svg" width="50" height="50"  alt="Browserstack"/></a>   
 </p>
 
 ____
@@ -113,7 +114,7 @@ ____
 
 ____
 <a id="video"></a>
-## <img alt="Browserstack" height="25" src="images/Browserstack.svg" width="25"/></a> Пример видео выполнения тестов в Browserstack
+## <img alt="Browserstack" height="25" src="images/logo/Browserstack.svg" width="25"/></a> Пример видео выполнения тестов в Browserstack
 ____
 <p align="center">
 <img title="Browserstack Video" src="images/video/video_report.gif" width="550" height="350"  alt="video">   
