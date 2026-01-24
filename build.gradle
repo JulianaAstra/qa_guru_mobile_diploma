@@ -67,7 +67,7 @@ tasks.withType(Test) {
 
     useJUnitPlatform {
         if (deviceHost == "browserstack") {
-            includeTags 'browserstack'
+            includeTags 'emulation'
         } else {
             includeTags 'emulation'
         }
