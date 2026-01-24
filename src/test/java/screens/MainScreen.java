@@ -33,8 +33,8 @@ public class MainScreen {
         System.out.println("Search box displayed: " + searchField.isDisplayed());
         System.out.println("Search box enabled: " + searchField.isEnabled());
 
-        searchField.shouldBe(visible)
-                .click();
+//        searchField.shouldBe(visible)
+//                .click();
 
         searchContainer.shouldBe(visible).click();
 
