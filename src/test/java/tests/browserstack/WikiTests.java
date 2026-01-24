@@ -15,8 +15,8 @@ public class WikiTests extends TestBase {
         mainScreen
                 .revealSearchInput()
                 .searchItem(articleName)
-                .checkContentFound()
-                .checkItemFounded(articleName);
+                .checkContentFoundBS()
+                .checkItemFoundedBS(articleName);
     }
 
     @Test
@@ -25,8 +25,8 @@ public class WikiTests extends TestBase {
         mainScreen
                 .revealSearchInput()
                 .searchItem(articleName)
-                .checkContentFound()
-                .clickFirstSearchItem();
+                .checkContentFoundBS()
+                .clickFirstSearchItemBS();
 
         articleScreen.checkArticleByName(articleName);
     }

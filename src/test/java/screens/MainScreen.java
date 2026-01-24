@@ -41,6 +41,13 @@ public class MainScreen {
         return this;
     };
 
+    @Step("Check content found browserstack")
+    public MainScreen checkContentFoundBS() {
+        searchResultsList
+                .shouldHave(sizeGreaterThan(0));
+        return this;
+    };
+
     @Step("Check item {item} founded")
     public void checkItemFounded(String item) {
         firstSearchResultHead
@@ -50,5 +57,16 @@ public class MainScreen {
     @Step("Click first result in search results")
     public void clickFirstSearchItem() {
         firstSearchResult.click();
+    }
+
+    @Step("Check item {item} founded browserstack")
+    public void checkItemFoundedBS(String item) {
+        searchResult
+                .shouldHave(text(item));
+    };
+
+    @Step("Click first result in search results browserstack")
+    public void clickFirstSearchItemBS() {
+        searchResult.click();
     }
 }
