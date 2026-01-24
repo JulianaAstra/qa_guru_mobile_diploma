@@ -1,11 +1,14 @@
 package tests.emulation;
 
+import io.qameta.allure.Feature;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
 
 @Tag("emulation")
+@Feature("Создание заметок")
+@DisplayName("Тесты на создание задач и заметок")
 public class ToDoTests extends TestBase {
     String taskTitle = testData.randomTaskTitle;
     String taskDescription = testData.randomTaskDescription;
