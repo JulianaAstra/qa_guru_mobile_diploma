@@ -13,7 +13,8 @@ public class ToDoTests extends TestBase {
     @Test
     @DisplayName("Редактор создания новой заметки открывается")
     void successfulNewNoteTest() {
-        taskScreen.checkMainPageOpened()
+        taskScreen.denyNotifications()
+                .checkMainPageOpened()
                 .createTask()
                 .addTaskTitle(taskTitle)
                 .addTaskDescripition(taskDescription)
