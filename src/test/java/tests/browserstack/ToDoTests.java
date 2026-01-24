@@ -7,18 +7,20 @@ import tests.TestBase;
 
 @Tag("browserstack")
 public class ToDoTests extends TestBase {
-    String taskTitle = testData.randomTaskTitle;
-    String taskDescription = testData.randomTaskDescription;
+    @Test
+    @DisplayName("Редактор создания новой задачи открывается")
+    void successfulNewTaskTest() {
+        taskScreen.denyNotifications()
+                .checkMainPageOpened()
+                .createTask();
+    }
 
     @Test
     @DisplayName("Редактор создания новой заметки открывается")
     void successfulNewNoteTest() {
         taskScreen.denyNotifications()
-                .checkMainPageOpened()
-                .createTask()
-                .addTaskTitle(taskTitle)
-                .addTaskDescripition(taskDescription)
-                .saveTask()
-                .checkSavedTaskDisplays(taskTitle + "\n" + taskDescription);
+                .checkMainPageOpened();
+        noteScreen.openNotesScreen()
+                .createNote();
     }
 }

@@ -7,4 +7,5 @@ public class TestData {
 
     public String randomTaskTitle = faker.ancient().god();
     public String randomTaskDescription = faker.lordOfTheRings().location();
+    public String randomNoteTitle = faker.harryPotter().house();
 }

@@ -15,7 +15,6 @@ public class TaskScreen {
     SelenideElement header = $x("//android.view.View[@content-desc=\"ToDo\"]");
     SelenideElement btnDeny = $(id("com.android.permissioncontroller:id/permission_deny_button"));
     SelenideElement modal = $(id("com.android.permissioncontroller:id/grant_dialog"));
-    SelenideElement openTaskBtn = $x("//android.widget.Button[1]");
     SelenideElement createTaskBtn = $x("//android.widget.Button[2]");
     SelenideElement addTaskModalHeader = $x("//android.view.View[@content-desc=\"Add Task\"]");
     SelenideElement addTitleInput = $x("//*[contains(@hint, 'Title')]");
