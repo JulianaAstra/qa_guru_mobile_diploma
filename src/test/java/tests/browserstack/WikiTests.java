@@ -14,7 +14,7 @@ public class WikiTests extends TestBase {
     @Test
     @DisplayName("Article is founded from search")
     void successfulSearchTest() {
-        back();
+//        back();
         mainScreen
                 .revealSearchInput()
                 .searchItem(articleName)
