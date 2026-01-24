@@ -12,10 +12,18 @@ import static io.appium.java_client.AppiumBy.id;
 
 @Tag("emulation")
 public class ToDoTests extends TestBase {
+    String taskTitle = testData.randomTaskTitle;
+    String taskDescription = testData.randomTaskDescription;
+
     @Test
-    @DisplayName("Редактор создания новой заметки открывается")
+    @DisplayName("Редактор создания новой задачи открывается")
     void successfulNewNoteTest() {
-        mainScreen.denyNotifications()
-                  .checkMainPageOpened();
+        taskScreen.denyNotifications()
+                .checkMainPageOpened()
+                .createTask()
+                .addTaskTitle(taskTitle)
+                .addTaskDescripition(taskDescription)
+                .saveTask()
+                .checkSavedTaskDisplays(taskTitle + "\n" + taskDescription);
     }
 }
