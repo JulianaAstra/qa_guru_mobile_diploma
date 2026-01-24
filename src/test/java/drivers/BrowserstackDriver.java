@@ -10,6 +10,8 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 import javax.annotation.Nonnull;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BrowserstackDriver implements WebDriverProvider {
     private final BrowserstackConfig config = ConfigFactory.create(
@@ -22,14 +24,30 @@ public class BrowserstackDriver implements WebDriverProvider {
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
         MutableCapabilities caps = new MutableCapabilities();
 
-        caps.setCapability("user", config.user());
-        caps.setCapability("key", config.key());
-        caps.setCapability("app", config.app());
-        caps.setCapability("device", config.device());
-        caps.setCapability("os_version", config.osVersion());
-        caps.setCapability("project", config.project());
-        caps.setCapability("build", config.build());
-        caps.setCapability("name", config.name());
+        // 1. Основные capabilities
+        caps.setCapability("platformName", config.name());
+        caps.setCapability("appium:app", config.app());
+
+        // 2. BrowserStack options в W3C формате
+        Map<String, Object> bstackOptions = new HashMap<>();
+
+        bstackOptions.put("userName", config.user());
+        bstackOptions.put("accessKey", config.key());
+        bstackOptions.put("deviceName", config.device());
+        bstackOptions.put("platformVersion", config.osVersion());
+        bstackOptions.put("projectName", config.project());
+        bstackOptions.put("buildName", config.build());
+        bstackOptions.put("sessionName", config.name());
+
+//
+//        caps.setCapability("user", config.user());
+//        caps.setCapability("key", config.key());
+//        caps.setCapability("app", config.app());
+//        caps.setCapability("device", config.device());
+//        caps.setCapability("os_version", config.osVersion());
+//        caps.setCapability("project", config.project());
+//        caps.setCapability("build", config.build());
+//        caps.setCapability("name", config.name());
 
         try {
             return new RemoteWebDriver(
