@@ -33,6 +33,9 @@ public interface BrowserstackConfig extends Config {
     @Key("name")
     String name();
 
+    @Key("platformName")
+    String platformName();
+
     // Опционально, если используется в старом коде
     @DefaultValue("https://hub.browserstack.com/wd/hub")
     @Key("url")

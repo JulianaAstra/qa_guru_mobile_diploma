@@ -25,7 +25,8 @@ public class BrowserstackDriver implements WebDriverProvider {
         MutableCapabilities caps = new MutableCapabilities();
 
         // 1. Основные capabilities
-        caps.setCapability("platformName", config.name());
+        caps.setCapability("platformName", config.platformName());
+        caps.setCapability("appium:automationName", "uiautomator2");
         caps.setCapability("appium:app", config.app());
 
         // 2. BrowserStack options в W3C формате
@@ -39,6 +40,7 @@ public class BrowserstackDriver implements WebDriverProvider {
         bstackOptions.put("buildName", config.build());
         bstackOptions.put("sessionName", config.name());
 
+        caps.setCapability("bstack:options", bstackOptions);
 //
 //        caps.setCapability("user", config.user());
 //        caps.setCapability("key", config.key());
