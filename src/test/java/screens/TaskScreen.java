@@ -1,10 +1,8 @@
 package screens;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
-
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.attribute;
 import static com.codeborne.selenide.Condition.visible;
@@ -78,13 +76,6 @@ public class TaskScreen {
         taskCards.shouldHave(sizeGreaterThan(0))
                 .findBy(attribute("content-desc", expectedValue))
                 .shouldBe(visible);
-
-        // Выводим реальные content-desc для отладки
-//        $$x("//android.view.View[@content-desc]").shouldHave(sizeGreaterThan(0))
-//                .forEach(el -> {
-//            System.out.println("Found: '" + el.getAttribute("content-desc") + "'");
-//            System.out.println("Expected: '" + expectedValue + "'");
-//        });
 
         return this;
     }
