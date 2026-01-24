@@ -36,8 +36,10 @@ ____
 <a id="cases"></a>
 ## <a name="Примеры автоматизированных тест-кейсов">**Примеры автоматизированных тест-кейсов:**</a>
 ____
-- ✓ *Проверка поиска статьи на главном экране*
-- ✓ *Проверка открытия статья из поисковой выдачи*
+- ✓ *Отображение созданной заметки в списке*
+- ✓ *Отображение созданной задачи в списке*
+- ✓ *Открытие окна создания заметки*
+- ✓ *Открытие окна создания задачи*
 
 ____
 <a id="jenkins"></a>
@@ -50,12 +52,9 @@ ____
 
 ### **Параметры сборки в Jenkins:**
 
-- *browser (браузер, по умолчанию chrome)*
-- *version (версия браузера, по умолчанию 128)*
-- *windowSize (размер окна браузера, по умолчанию 1920x1080)*
-- *baseUrl (адрес тестируемого веб-сайта)*
-- *remoteUrl (логин, пароль и адрес удаленного сервера Selenoid)*
-- *questName (название квеста для теста бронирования)*
+- *deviceHost (хостинг для запуска тестов)*
+- *user (логин пользователя в browserstack)*
+- *key (пароль пользователя в browserstack)*
 
 ## **Запуск тестов**
 
@@ -81,28 +80,12 @@ clean test
 ```
 ___
 <a id="allure"></a>
-## <img alt="Allure" height="25" src="images/logo/Allure.svg" width="25"/></a> <a name="Allure"></a>Allure [отчет](https://jenkins.autotests.cloud/job/037-sandraboticelli-escaperoom-12/allure/)</a>
+## <img alt="Allure" height="25" src="images/logo/Allure.svg" width="25"/></a> <a name="Allure"></a>Allure [отчет](https://jenkins.autotests.cloud/job/qa_guru_mobile_diploma/allure/)</a>
 ___
-
-### *Основная страница отчёта*
 
 <p align="center">  
 <img title="Allure Overview Dashboard" src="images/screen/allure_report_1.png" width="850">  
 </p>  
-
-### *Тест-кейсы*
-
-<p align="center">  
-<img title="Allure Tests" src="images/screen/allure_report_4.png" width="850">  
-</p>
-
-### *Графики*
-
-  <p align="center">  
-<img title="Allure Graphics" src="images/screen/allure_report_2.png" width="850">
-
-<img title="Allure Graphics" src="images/screen/allure_report_3.png" width="850">  
-</p>
 
 ____
 <a id="telegram"></a>
