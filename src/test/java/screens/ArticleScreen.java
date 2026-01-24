@@ -9,7 +9,6 @@ import static io.appium.java_client.AppiumBy.id;
 
 public class ArticleScreen {
     SelenideElement article = $(id("pcs"));
-    // добавить элементы для модалок и закрытие
     SelenideElement closeModalBtn = $(id("org.wikipedia.alpha:id/closeButton"));
     SelenideElement modalWindow = $(id("org.wikipedia.alpha:id/dialogContainer"));
 

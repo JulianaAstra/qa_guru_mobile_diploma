@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import tests.TestBase;
 
+import static com.codeborne.selenide.Selenide.back;
+
 @Tag("browserstack")
 public class WikiTests extends TestBase {
     String articleName = "Appium";
@@ -12,6 +14,7 @@ public class WikiTests extends TestBase {
     @Test
     @DisplayName("Article is founded from search")
     void successfulSearchTest() {
+        back();
         mainScreen
                 .revealSearchInput()
                 .searchItem(articleName)
