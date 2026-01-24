@@ -46,7 +46,7 @@ ____
 ## <img alt="Jenkins" height="25" src="images/logo/Jenkins.svg" width="25"/></a><a name="Сборка"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/qa_guru_mobile_diploma/)</a>
 ____
 <p align="center">  
-<a href="https://jenkins.autotests.cloud/job/qa_guru_mobile_diploma/"><img src="#" alt="Jenkins" width="950"/></a>  
+<a href="https://jenkins.autotests.cloud/job/qa_guru_mobile_diploma/"><img src="images/reports/jenkins.png" alt="Jenkins" width="950"/></a>  
 </p>
 
 
@@ -84,7 +84,7 @@ ___
 ___
 
 <p align="center">  
-<img title="Allure Overview Dashboard" src="images/screen/allure_report_1.png" width="850">  
+<img title="Allure Overview Dashboard" src="images/reports/allure.png" width="850">  
 </p>  
 
 ____
