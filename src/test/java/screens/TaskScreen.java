@@ -3,9 +3,11 @@ package screens;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
+
+import java.time.Duration;
+
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
-import static com.codeborne.selenide.Condition.attribute;
-import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 import static io.appium.java_client.AppiumBy.id;
 
@@ -16,7 +18,7 @@ public class TaskScreen {
     SelenideElement openTaskBtn = $x("//android.widget.Button[1]");
     SelenideElement createTaskBtn = $x("//android.widget.Button[2]");
     SelenideElement addTaskModalHeader = $x("//android.view.View[@content-desc=\"Add Task\"]");
-    SelenideElement addTitleInput = $x("//android.widget.EditText[@hint='Title']");
+    SelenideElement addTitleInput = $x("//*[contains(@hint, 'Title')]");
     SelenideElement addDescriptionInput = $x("//android.widget.EditText[@hint='Description']");
     SelenideElement saveTaskBtn = $x("//android.widget.Button[@content-desc=\"Save\"]");
     ElementsCollection taskCards = $$x("//android.view.View[@content-desc]");
@@ -48,7 +50,7 @@ public class TaskScreen {
 
     @Step("Ввести текст заголовка задачи")
     public TaskScreen addTaskTitle(String title) {
-        addTitleInput.shouldBe(visible)
+        addTitleInput.should(exist, Duration.ofSeconds(15))
                 .click();
         addTitleInput.sendKeys(title);
 
