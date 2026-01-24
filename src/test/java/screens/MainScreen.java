@@ -2,6 +2,7 @@ package screens;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
+import io.appium.java_client.AppiumBy;
 import io.qameta.allure.Step;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
@@ -24,6 +25,12 @@ public class MainScreen {
 
     @Step("Reveal search input")
     public MainScreen revealSearchInput() {
+        // Простая проверка - видим ли элемент
+        sleep(3000);
+        System.out.println("Search box exists: " + searchField.exists());
+        System.out.println("Search box displayed: " + searchField.isDisplayed());
+        System.out.println("Search box enabled: " + searchField.isEnabled());
+
         searchField.shouldBe(visible)
                 .click();
         return this;

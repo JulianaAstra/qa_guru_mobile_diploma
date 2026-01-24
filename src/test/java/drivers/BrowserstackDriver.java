@@ -25,6 +25,13 @@ public class BrowserstackDriver implements WebDriverProvider {
         MutableCapabilities caps = new MutableCapabilities();
         Map<String, Object> bstackOptions = new HashMap<>();
 
+        caps.setCapability("appium:autoGrantPermissions", true);
+        caps.setCapability("appium:autoAcceptAlerts", true);
+        caps.setCapability("appium:ensureWebviewsHavePages", true);
+        caps.setCapability("appium:nativeWebScreenshot", true);
+        caps.setCapability("appium:newCommandTimeout", 3600);
+        caps.setCapability("appium:connectHardwareKeyboard", true);
+
         caps.setCapability("platformName", config.platformName());
         caps.setCapability("appium:automationName", "uiautomator2");
         caps.setCapability("appium:app", config.app());
