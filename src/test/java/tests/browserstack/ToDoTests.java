@@ -1,0 +1,15 @@
+package tests.browserstack;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
+import tests.TestBase;
+
+@Tag("browserstack")
+public class ToDoTests extends TestBase {
+    @Test
+    @DisplayName("Редактор создания новой заметки открывается")
+    void successfulNewNoteTest() {
+        mainScreen.checkMainPageOpened();
+    }
+}

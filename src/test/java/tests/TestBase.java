@@ -16,7 +16,6 @@ import static com.codeborne.selenide.Selenide.open;
 
 public class TestBase {
     public MainScreen mainScreen = new MainScreen();
-    public ArticleScreen articleScreen = new ArticleScreen();
 
     @BeforeAll
     static void setupConfig() {

@@ -33,8 +33,7 @@ public class EmulationDriver implements WebDriverProvider {
                .setPlatformName(ANDROID)
                .setPlatformVersion(config.osVersion())
                .setDeviceName(config.device())
-//               .setApp(getAppPath())
-                .setApp(getAppPathTODO())
+               .setApp(getAppPath())
                .setAppPackage("com.k.todo")
                .setAppActivity("com.k.todo.MainActivity");
 
@@ -50,23 +49,6 @@ public class EmulationDriver implements WebDriverProvider {
     }
 
     private String getAppPath() {
-        String appVersion = "app-alpha-universal-release.apk";
-        String appUrl = "https://github.com/wikimedia/apps-android-wikipedia" +
-                "/releases/download/latest/" + appVersion;
-        String appPath = "src/test/resources/apps/" + appVersion;
-
-        File app = new File(appPath);
-        if (!app.exists()) {
-            try (InputStream in = new URL(appUrl).openStream()) {
-                copyInputStreamToFile(in, app);
-            } catch (IOException e) {
-                throw new AssertionError("Failed to download application", e);
-            }
-        }
-        return app.getAbsolutePath();
-    }
-
-    private String getAppPathTODO() {
         String appVersion = "com.k.todo_11003.apk";
         String appUrl = "https://f-droid.org/repo/" + appVersion;
         String appPath = "src/test/resources/apps/" + appVersion;
