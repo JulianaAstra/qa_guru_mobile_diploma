@@ -35,8 +35,8 @@ public class EmulationDriver implements WebDriverProvider {
                .setDeviceName(config.device())
 //               .setApp(getAppPath())
                 .setApp(getAppPathTODO())
-               .setAppPackage("org.wikipedia.alpha")
-               .setAppActivity("org.wikipedia.main.MainActivity");
+               .setAppPackage("com.k.todo")
+               .setAppActivity("com.k.todo.MainActivity");
 
         return new AndroidDriver(getAppiumServerUrl(), options);
     }

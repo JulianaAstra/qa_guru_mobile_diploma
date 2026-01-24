@@ -8,8 +8,7 @@ import org.junit.jupiter.api.Test;
 import screens.ArticleScreen;
 import tests.TestBase;
 
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.back;
+import static com.codeborne.selenide.Selenide.*;
 import static io.appium.java_client.AppiumBy.id;
 
 @Tag("emulation")
@@ -48,7 +47,7 @@ public class WikiTests extends TestBase {
     void successfulNewNoteTest() {
         SelenideElement btnDeny = $(id("com.android.permissioncontroller:id/permission_deny_button"));
         SelenideElement modal = $(id("com.android.permissioncontroller:id/grant_dialog"));
-        SelenideElement header = $(id("//android.view.View[@content-desc=\"ToDo\"]"));
+        SelenideElement header = $x("//android.view.View[@content-desc=\"ToDo\"]");
 
         modal.shouldBe(Condition.visible);
         btnDeny.click();
