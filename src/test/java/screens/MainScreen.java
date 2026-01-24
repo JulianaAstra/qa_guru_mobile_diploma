@@ -14,6 +14,8 @@ import static io.appium.java_client.AppiumBy.id;
 public class MainScreen {
     SelenideElement searchField = $(accessibilityId("Search Wikipedia"));
 
+    SelenideElement searchContainer = $(id("org.wikipedia.alpha:id/search_container"));
+
     SelenideElement searchInput = $(id("org.wikipedia.alpha:id/search_src_text"));
     ElementsCollection searchResultsList = $$(id("org.wikipedia.alpha:id/page_list_item_title"));
     SelenideElement searchResult = $(id("org.wikipedia.alpha:id/page_list_item_title"));
@@ -33,6 +35,9 @@ public class MainScreen {
 
         searchField.shouldBe(visible)
                 .click();
+
+        searchContainer.shouldBe(visible).click();
+
         return this;
     }
 
