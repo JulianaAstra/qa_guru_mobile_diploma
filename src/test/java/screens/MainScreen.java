@@ -15,7 +15,7 @@ public class MainScreen {
     SelenideElement searchField = $(accessibilityId("Search Wikipedia"));
 
     SelenideElement searchContainer = $(id("org.wikipedia.alpha:id/search_container"));
-    SelenideElement search = $x("//android.widget.TextView[@text=\"Search Wikipedia\"]");
+    SelenideElement search = $x("//android.widget.ImageView[@content-desc='Search Wikipedia']");
 
     SelenideElement searchInput = $(id("org.wikipedia.alpha:id/search_src_text"));
     ElementsCollection searchResultsList = $$(id("org.wikipedia.alpha:id/page_list_item_title"));
@@ -29,17 +29,7 @@ public class MainScreen {
     @Step("Reveal search input")
     public MainScreen revealSearchInput() {
         // Простая проверка - видим ли элемент
-        sleep(3000);
-//        System.out.println("Search box exists: " + searchField.exists());
-//        System.out.println("Search box displayed: " + searchField.isDisplayed());
-//        System.out.println("Search box enabled: " + searchField.isEnabled());
-
-//        searchField.shouldBe(visible)
-//                .click();
-
-        System.out.println("Search box exists: " + search.exists());
-        System.out.println("Search box displayed: " + search.isDisplayed());
-        System.out.println("Search box enabled: " + search.isEnabled());
+        sleep(5000);
 
         search.shouldBe(visible).click();
 
