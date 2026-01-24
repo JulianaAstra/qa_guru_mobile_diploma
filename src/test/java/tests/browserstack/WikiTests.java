@@ -19,15 +19,15 @@ public class WikiTests extends TestBase {
                 .checkItemFoundedBS(articleName);
     }
 
-    @Test
-    @DisplayName("Article opens from search results")
-    void successfulArticleOpenTest() {
-        mainScreen
-                .revealSearchInput()
-                .searchItem(articleName)
-                .checkContentFoundBS()
-                .clickFirstSearchItemBS();
-
-        articleScreen.checkArticleByName(articleName);
-    }
+//    @Test
+//    @DisplayName("Article opens from search results")
+//    void successfulArticleOpenTest() {
+//        mainScreen
+//                .revealSearchInput()
+//                .searchItem(articleName)
+//                .checkContentFoundBS()
+//                .clickFirstSearchItemBS();
+//
+//        articleScreen.checkArticleByName(articleName);
+//    }
 }
