@@ -65,13 +65,13 @@ tasks.withType(Test) {
 
      def deviceHost = System.getProperty("deviceHost", "emulation")
 
-        useJUnitPlatform {
-            if (deviceHost == "browserstack") {
-                includeTags 'browserstack'
-            } else {
-                includeTags 'emulation'
-            }
+    useJUnitPlatform {
+        if (deviceHost == "browserstack") {
+            includeTags 'browserstack'
+        } else {
+            includeTags 'emulation'
         }
+    }
 }
 
 // task emulation(type: Test) {
@@ -84,4 +84,3 @@ tasks.withType(Test) {
 //     useJUnitPlatform {
 //         includeTags 'browserstack'
 //     }
-}
