@@ -28,10 +28,7 @@ public class MainScreen {
 
     @Step("Reveal search input")
     public MainScreen revealSearchInput() {
-        // Простая проверка - видим ли элемент
-        sleep(5000);
-
-        search.shouldBe(visible).click();
+        searchField.click();
 
         return this;
     }
