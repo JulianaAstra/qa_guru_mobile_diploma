@@ -14,30 +14,42 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BrowserstackDriver implements WebDriverProvider {
-    private final BrowserstackConfig config = ConfigFactory.create(
-            BrowserstackConfig.class,
-            System.getProperties()
-    );
+//    private final BrowserstackConfig config = ConfigFactory.create(
+//            BrowserstackConfig.class,
+//            System.getProperties()
+//    );
 
     @Nonnull
     @Override
     public WebDriver createDriver(@Nonnull Capabilities capabilities) {
         MutableCapabilities caps = new MutableCapabilities();
-        Map<String, Object> bstackOptions = new HashMap<>();
+        BrowserstackConfig config = ConfigFactory.create(BrowserstackConfig.class);
 
-        caps.setCapability("platformName", config.platformName());
+
+        caps.setCapability("browserstack.user", config.user());
+        caps.setCapability("browserstack.key", config.key());
+        caps.setCapability("app", config.app());
+        caps.setCapability("device", config.device());
+        caps.setCapability("os_version", config.osVersion());
+        caps.setCapability("project", "First Java Project");
+        caps.setCapability("build", "browserstack-build-1");
+        caps.setCapability("name", "first_test");
+
+//        Map<String, Object> bstackOptions = new HashMap<>();
+//
+//        caps.setCapability("platformName", config.platformName());
 //        caps.setCapability("appium:automationName", "uiautomator2");
-        caps.setCapability("appium:app", config.app());
-
-        bstackOptions.put("userName", config.user());
-        bstackOptions.put("accessKey", config.key());
-        bstackOptions.put("deviceName", config.device());
-        bstackOptions.put("platformVersion", config.osVersion());
-        bstackOptions.put("projectName", config.project());
-        bstackOptions.put("buildName", config.build());
-        bstackOptions.put("sessionName", config.name());
-
-        caps.setCapability("bstack:options", bstackOptions);
+//        caps.setCapability("appium:app", config.app());
+//
+//        bstackOptions.put("userName", config.user());
+//        bstackOptions.put("accessKey", config.key());
+//        bstackOptions.put("deviceName", config.device());
+//        bstackOptions.put("platformVersion", config.osVersion());
+//        bstackOptions.put("projectName", config.project());
+//        bstackOptions.put("buildName", config.build());
+//        bstackOptions.put("sessionName", config.name());
+//
+//        caps.setCapability("bstack:options", bstackOptions);
 
         try {
             return new RemoteWebDriver(
