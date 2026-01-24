@@ -62,16 +62,26 @@ tasks.withType(Test) {
             exceptionFormat "short"
         }
     }
+
+     def deviceHost = System.getProperty("deviceHost", "emulation")
+
+        useJUnitPlatform {
+            if (deviceHost == "browserstack") {
+                includeTags 'browserstack'
+            } else {
+                includeTags 'emulation'
+            }
+        }
 }
 
-task emulation(type: Test) {
-    useJUnitPlatform {
-        includeTags 'emulation'
-    }
-}
-
-task browserstack(type: Test) {
-    useJUnitPlatform {
-        includeTags 'browserstack'
-    }
+// task emulation(type: Test) {
+//     useJUnitPlatform {
+//         includeTags 'emulation'
+//     }
+// }
+//
+// task browserstack(type: Test) {
+//     useJUnitPlatform {
+//         includeTags 'browserstack'
+//     }
 }
