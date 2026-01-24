@@ -1,5 +1,5 @@
-## <img alt="Wikipedia" height="140" src="images/logo/wikipedia.svg" width="140"/></a>
-# Проект по мобильной автоматизации тестирования для приложения Wikipedia
+## <a href="https://f-droid.org/packages/com.k.todo/"><img alt="Todo" height="140" src="images/logo/todo_logo.svg" width="140"/></a>
+# Проект по мобильной автоматизации тестирования для приложения Todo
 
 ## **Содержание:**
 ____
