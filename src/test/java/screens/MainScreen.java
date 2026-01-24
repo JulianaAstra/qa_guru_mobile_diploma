@@ -11,6 +11,8 @@ import static io.appium.java_client.AppiumBy.id;
 
 public class MainScreen {
     SelenideElement searchField = $(accessibilityId("Search Wikipedia"));
+    SelenideElement searchFieldBS = $(id("org.wikipedia.alpha:id/search_container"));
+
     SelenideElement searchInput = $(id("org.wikipedia.alpha:id/search_src_text"));
     ElementsCollection searchResults = $$x("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View");
 
@@ -23,6 +25,13 @@ public class MainScreen {
     @Step("Reveal search input")
     public MainScreen revealSearchInput() {
         searchField
+                .click();
+        return this;
+    }
+
+    @Step("Reveal search input browserstack")
+    public MainScreen revealSearchInputBS() {
+        searchFieldBS
                 .click();
         return this;
     }
