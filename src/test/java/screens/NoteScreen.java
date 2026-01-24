@@ -17,7 +17,6 @@ public class NoteScreen {
     SelenideElement createNoteBtn = $x("//android.widget.Button[2]");
     SelenideElement addNoteModalHeader = $x("//android.view.View[@content-desc=\"Add Note\"]");
     SelenideElement addTitleInput = $x("//*[contains(@hint, 'Title')]");
-    SelenideElement addDescriptionInput = $x("//android.widget.EditText[@hint='Description']");
     SelenideElement saveNoteBtn = $x("//android.widget.Button[@content-desc=\"Save\"]");
     ElementsCollection noteCards = $$x("//android.view.View[@content-desc]");
 
@@ -44,15 +43,6 @@ public class NoteScreen {
         addTitleInput.should(exist, Duration.ofSeconds(15))
                 .click();
         addTitleInput.sendKeys(title);
-
-        return this;
-    }
-
-    @Step("Ввести текст описания заметки")
-    public NoteScreen addNoteDescripition(String description) {
-        addDescriptionInput.shouldBe(visible)
-                .click();
-        addDescriptionInput.sendKeys(description);
 
         return this;
     }
