@@ -5,15 +5,18 @@ import com.codeborne.selenide.SelenideElement;
 import io.qameta.allure.Step;
 import static com.codeborne.selenide.CollectionCondition.sizeGreaterThan;
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$$;
+import static com.codeborne.selenide.Selenide.*;
 import static io.appium.java_client.AppiumBy.accessibilityId;
 import static io.appium.java_client.AppiumBy.id;
 
 public class MainScreen {
     SelenideElement searchField = $(accessibilityId("Search Wikipedia"));
     SelenideElement searchInput = $(id("org.wikipedia.alpha:id/search_src_text"));
+    ElementsCollection searchResults = $$x("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View");
+
+    SelenideElement firstSearchResult = $x("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View");
+    SelenideElement firstSearchResultHead = $x("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.TextView");
+
     ElementsCollection searchResultsList = $$(id("org.wikipedia.alpha:id/page_list_item_title"));
     SelenideElement searchResult = $(id("org.wikipedia.alpha:id/page_list_item_title"));
 
@@ -33,19 +36,19 @@ public class MainScreen {
 
     @Step("Check content found")
     public MainScreen checkContentFound() {
-        searchResultsList
+        searchResults
                 .shouldHave(sizeGreaterThan(0));
         return this;
     };
 
     @Step("Check item {item} founded")
     public void checkItemFounded(String item) {
-        searchResult
+        firstSearchResultHead
                 .shouldHave(text(item));
     };
 
     @Step("Click first result in search results")
     public void clickFirstSearchItem() {
-        searchResult.click();
+        firstSearchResult.click();
     }
 }

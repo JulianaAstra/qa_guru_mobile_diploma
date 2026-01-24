@@ -35,6 +35,7 @@ public class WikiTests extends TestBase {
                 .clickFirstSearchItem();
 
         articleScreen.closeModal() // todo написать метод
+                // убрать увед, чтобы получить доступ к элементам на странице "got it"
                 .checkArticleByName(articleName);
     }
 

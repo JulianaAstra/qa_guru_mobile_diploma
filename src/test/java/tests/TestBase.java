@@ -22,7 +22,6 @@ public class TestBase {
     @BeforeAll
     static void setupConfig() {
         Configuration.browser = DriverSelector.getDriver();
-//        Configuration.browser = EmulationDriver.class.getName();
         Configuration.browserSize = null;
         Configuration.timeout = 30000;
     }
