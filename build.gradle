@@ -69,3 +69,9 @@ task emulation(type: Test) {
         includeTags 'emulation'
     }
 }
+
+task browserstack(type: Test) {
+    useJUnitPlatform {
+        includeTags 'browserstack'
+    }
+}
