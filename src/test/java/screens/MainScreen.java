@@ -11,27 +11,18 @@ import static io.appium.java_client.AppiumBy.id;
 
 public class MainScreen {
     SelenideElement searchField = $(accessibilityId("Search Wikipedia"));
-    SelenideElement searchFieldBS = $(id("org.wikipedia.alpha:id/search_container"));
-
     SelenideElement searchInput = $(id("org.wikipedia.alpha:id/search_src_text"));
-    ElementsCollection searchResults = $$x("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View");
+    ElementsCollection searchResultsList = $$(id("org.wikipedia.alpha:id/page_list_item_title"));
+    SelenideElement searchResult = $(id("org.wikipedia.alpha:id/page_list_item_title"));
 
+    ElementsCollection searchResults = $$x("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View");
     SelenideElement firstSearchResult = $x("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View");
     SelenideElement firstSearchResultHead = $x("//androidx.compose.ui.platform.ComposeView/android.view.View/android.view.View/android.view.View/android.widget.TextView");
 
-    ElementsCollection searchResultsList = $$(id("org.wikipedia.alpha:id/page_list_item_title"));
-    SelenideElement searchResult = $(id("org.wikipedia.alpha:id/page_list_item_title"));
 
     @Step("Reveal search input")
     public MainScreen revealSearchInput() {
         searchField
-                .click();
-        return this;
-    }
-
-    @Step("Reveal search input browserstack")
-    public MainScreen revealSearchInputBS() {
-        searchFieldBS
                 .click();
         return this;
     }
@@ -72,10 +63,5 @@ public class MainScreen {
     public void checkItemFoundedBS(String item) {
         searchResult
                 .shouldHave(text(item));
-    };
-
-    @Step("Click first result in search results browserstack")
-    public void clickFirstSearchItemBS() {
-        searchResult.click();
     }
 }

@@ -13,7 +13,7 @@ public class WikiTests extends TestBase {
     @DisplayName("Article is founded from search")
     void successfulSearchTest() {
         mainScreen
-                .revealSearchInputBS()
+                .revealSearchInput()
                 .searchItem(articleName)
                 .checkContentFoundBS()
                 .checkItemFoundedBS(articleName);
