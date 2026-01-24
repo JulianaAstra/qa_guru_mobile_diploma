@@ -39,10 +39,10 @@ public class TestBase {
         if ("browserstack".equals(deviceHost)) {
             Attach.addVideo(sessionId);
         } else {
+            Attach.pageSource();
             Attach.screenshotAs("Last screenshot");
         }
 
-        Attach.pageSource();
         closeWebDriver();
     }
 }
