@@ -20,5 +20,4 @@ public class Browserstack {
                 .statusCode(200)
                 .extract().path("automation_session.video_url");
     }
-    // .basic("floratds_7A1NL2", "sqqsJJGR7BeDwyArmhC3")
 }
