@@ -65,18 +65,13 @@ ___
 ```bash  
 ./gradlew clean test -DdeviceHost=emulation
 ```
-
-***Локальный запуск тестов в Browserstack:***
-```bash  
-./gradlew clean test -DdeviceHost=browserstack
-```
-
 ***Удалённый запуск через Jenkins:***
 ```bash  
 clean test
 -DdeviceHost=browserstack
 -Duser=${USER}
 -Dkey=${KEY}
+-Dapp=${APP}
 ```
 ___
 <a id="allure"></a>
