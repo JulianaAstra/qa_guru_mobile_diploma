@@ -94,7 +94,7 @@ ____
 ## <img alt="Browserstack" height="25" src="images/logo/Browserstack.svg" width="25"/></a> Пример видео выполнения тестов в Browserstack
 ____
 <p align="center">
-<img title="Browserstack Video" src="images/reports/video_report.gif" width="550" height="350"  alt="video">   
+<img title="Browserstack Video" src="images/reports/video_report.gif" width="450" height="350"  alt="video">   
 </p>
 
 
