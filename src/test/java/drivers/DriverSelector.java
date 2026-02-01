@@ -4,12 +4,13 @@ public class DriverSelector {
     public static String getDriver() {
         String deviceHost = System.getProperty("deviceHost", "emulation");
 
-        if ("browserstack".equals(deviceHost)) {
-            return "drivers.BrowserstackDriver";
-        } else if ("emulation".equals(deviceHost)) {
-            return "drivers.EmulationDriver";
-        } else {
-            throw new AssertionError("Некорректный хост: " + deviceHost);
+        switch (deviceHost) {
+            case "browserstack":
+                return BrowserstackDriver.class.getName();
+            case "emulation":
+                return EmulationDriver.class.getName();
+            default:
+                throw new AssertionError("Некорректный хост: " + deviceHost);
         }
     }
 }
